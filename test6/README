@@ -90,9 +90,13 @@ public class sCrc32 {
 
 
 		System.out.println("CRC32        = " + crc);
+		
+		long yb = crc & 0x00000000ffffffffL ;
+		System.out.println("CRC32        = " + yb);
 
 
-      return String.valueOf(crc);
+      return String.valueOf(yb);
+
 
 
 	}
