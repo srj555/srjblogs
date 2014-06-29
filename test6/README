@@ -1,261 +1,101 @@
-== Welcome to Rails
 
-Rails is a web-application framework that includes everything needed to create
-database-backed web applications according to the Model-View-Control pattern.
-
-This pattern splits the view (also called the presentation) into "dumb"
-templates that are primarily responsible for inserting pre-built data in between
-HTML tags. The model contains the "smart" domain objects (such as Account,
-Product, Person, Post) that holds all the business logic and knows how to
-persist themselves to a database. The controller handles the incoming requests
-(such as Save New Account, Update Product, Show Post) by manipulating the model
-and directing data to the view.
-
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
-
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails. You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
+public class sCrc32 { 
 
 
-== Getting Started
-
-1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
-
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
-
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
-
-4. Follow the guidelines to start developing your application. You can find
-the following resources handy:
-
-* The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
-* Ruby on Rails Tutorial Book: http://www.railstutorial.org/
+	public String getCRC(String args) { 
 
 
-== Debugging Rails
 
-Sometimes your application goes wrong. Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
-
-First area to check is the application log files. Have "tail -f" commands
-running on the server.log and development.log. Rails will automatically display
-debugging and runtime information to these files. Debugging info will also be
-shown in the browser on requests from 127.0.0.1.
-
-You can also log your own messages directly into the log file from your code
-using the Ruby logger class from inside your controllers. Example:
-
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
-
-The result will be a message in your log file along the lines of:
-
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1!
-
-More information on how to use the logger is at http://www.ruby-doc.org/core/
-
-Also, Ruby documentation can be found at http://www.ruby-lang.org/. There are
-several books available online as well:
-
-* Programming Ruby: http://www.ruby-doc.org/docs/ProgrammingRuby/ (Pickaxe)
-* Learn to Program: http://pine.fm/LearnToProgram/ (a beginners guide)
-
-These two books will bring you up to speed on the Ruby language and also on
-programming in general.
-
-
-== Debugger
-
-Debugger support is available through the debugger command when you start your
-Mongrel or WEBrick server with --debugger. This means that you can break out of
-execution at any point in the code, investigate and change the model, and then,
-resume execution! You need to install ruby-debug to run the server in debugging
-mode. With gems, use <tt>sudo gem install ruby-debug</tt>. Example:
-
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.all
-      debugger
-    end
-  end
-
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
-
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8
-          @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>,
-       #<Post:0x14a6620
-          @attributes={"title"=>"Rails", "body"=>"Only ten..", "id"=>"2"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
-
-...and even better, you can examine how your runtime objects actually work:
-
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
-
-Finally, when you're ready to resume execution, you can enter "cont".
+		int[] table = {
+				0x00000000,0x04C11DB7,0x09823B6E,0x0D4326D9,
+				0x130476DC,0x17C56B6B,0x1A864DB2,0x1E475005,
+				0x2608EDB8,0x22C9F00F,0x2F8AD6D6,0x2B4BCB61,
+				0x350C9B64,0x31CD86D3,0x3C8EA00A,0x384FBDBD,
+				0x4C11DB70,0x48D0C6C7,0x4593E01E,0x4152FDA9,
+				0x5F15ADAC,0x5BD4B01B,0x569796C2,0x52568B75,
+				0x6A1936C8,0x6ED82B7F,0x639B0DA6,0x675A1011,
+				0x791D4014,0x7DDC5DA3,0x709F7B7A,0x745E66CD,
+				0x9823B6E0,0x9CE2AB57,0x91A18D8E,0x95609039,
+				0x8B27C03C,0x8FE6DD8B,0x82A5FB52,0x8664E6E5,
+				0xBE2B5B58,0xBAEA46EF,0xB7A96036,0xB3687D81,
+				0xAD2F2D84,0xA9EE3033,0xA4AD16EA,0xA06C0B5D,
+				0xD4326D90,0xD0F37027,0xDDB056FE,0xD9714B49,
+				0xC7361B4C,0xC3F706FB,0xCEB42022,0xCA753D95,
+				0xF23A8028,0xF6FB9D9F,0xFBB8BB46,0xFF79A6F1,
+				0xE13EF6F4,0xE5FFEB43,0xE8BCCD9A,0xEC7DD02D,
+				0x34867077,0x30476DC0,0x3D044B19,0x39C556AE,
+				0x278206AB,0x23431B1C,0x2E003DC5,0x2AC12072,
+				0x128E9DCF,0x164F8078,0x1B0CA6A1,0x1FCDBB16,
+				0x018AEB13,0x054BF6A4,0x0808D07D,0x0CC9CDCA,
+				0x7897AB07,0x7C56B6B0,0x71159069,0x75D48DDE,
+				0x6B93DDDB,0x6F52C06C,0x6211E6B5,0x66D0FB02,
+				0x5E9F46BF,0x5A5E5B08,0x571D7DD1,0x53DC6066,
+				0x4D9B3063,0x495A2DD4,0x44190B0D,0x40D816BA,
+				0xACA5C697,0xA864DB20,0xA527FDF9,0xA1E6E04E,
+				0xBFA1B04B,0xBB60ADFC,0xB6238B25,0xB2E29692,
+				0x8AAD2B2F,0x8E6C3698,0x832F1041,0x87EE0DF6,
+				0x99A95DF3,0x9D684044,0x902B669D,0x94EA7B2A,
+				0xE0B41DE7,0xE4750050,0xE9362689,0xEDF73B3E,
+				0xF3B06B3B,0xF771768C,0xFA325055,0xFEF34DE2,
+				0xC6BCF05F,0xC27DEDE8,0xCF3ECB31,0xCBFFD686,
+				0xD5B88683,0xD1799B34,0xDC3ABDED,0xD8FBA05A,
+				0x690CE0EE,0x6DCDFD59,0x608EDB80,0x644FC637,
+				0x7A089632,0x7EC98B85,0x738AAD5C,0x774BB0EB,
+				0x4F040D56,0x4BC510E1,0x46863638,0x42472B8F,
+				0x5C007B8A,0x58C1663D,0x558240E4,0x51435D53,
+				0x251D3B9E,0x21DC2629,0x2C9F00F0,0x285E1D47,
+				0x36194D42,0x32D850F5,0x3F9B762C,0x3B5A6B9B,
+				0x0315D626,0x07D4CB91,0x0A97ED48,0x0E56F0FF,
+				0x1011A0FA,0x14D0BD4D,0x19939B94,0x1D528623,
+				0xF12F560E,0xF5EE4BB9,0xF8AD6D60,0xFC6C70D7,
+				0xE22B20D2,0xE6EA3D65,0xEBA91BBC,0xEF68060B,
+				0xD727BBB6,0xD3E6A601,0xDEA580D8,0xDA649D6F,
+				0xC423CD6A,0xC0E2D0DD,0xCDA1F604,0xC960EBB3,
+				0xBD3E8D7E,0xB9FF90C9,0xB4BCB610,0xB07DABA7,
+				0xAE3AFBA2,0xAAFBE615,0xA7B8C0CC,0xA379DD7B,
+				0x9B3660C6,0x9FF77D71,0x92B45BA8,0x9675461F,
+				0x8832161A,0x8CF30BAD,0x81B02D74,0x857130C3,
+				0x5D8A9099,0x594B8D2E,0x5408ABF7,0x50C9B640,
+				0x4E8EE645,0x4A4FFBF2,0x470CDD2B,0x43CDC09C,
+				0x7B827D21,0x7F436096,0x7200464F,0x76C15BF8,
+				0x68860BFD,0x6C47164A,0x61043093,0x65C52D24,
+				0x119B4BE9,0x155A565E,0x18197087,0x1CD86D30,
+				0x029F3D35,0x065E2082,0x0B1D065B,0x0FDC1BEC,
+				0x3793A651,0x3352BBE6,0x3E119D3F,0x3AD08088,
+				0x2497D08D,0x2056CD3A,0x2D15EBE3,0x29D4F654,
+				0xC5A92679,0xC1683BCE,0xCC2B1D17,0xC8EA00A0,
+				0xD6AD50A5,0xD26C4D12,0xDF2F6BCB,0xDBEE767C,
+				0xE3A1CBC1,0xE760D676,0xEA23F0AF,0xEEE2ED18,
+				0xF0A5BD1D,0xF464A0AA,0xF9278673,0xFDE69BC4,
+				0x89B8FD09,0x8D79E0BE,0x803AC667,0x84FBDBD0,
+				0x9ABC8BD5,0x9E7D9662,0x933EB0BB,0x97FFAD0C,
+				0xAFB010B1,0xAB710D06,0xA6322BDF,0xA2F33668,
+				0xBCB4666D,0xB8757BDA,0xB5365D03,0xB1F740B4
+		};
 
 
-== Console
-
-The console is a Ruby shell, which allows you to interact with your
-application's domain model. Here you'll have all parts of the application
-configured, just like it is when the application is running. You can inspect
-domain models, change values, and save to the database. Starting the script
-without arguments will launch it in the development environment.
-
-To start the console, run <tt>rails console</tt> from the application
-directory.
-
-Options:
-
-* Passing the <tt>-s, --sandbox</tt> argument will rollback any modifications
-  made to the database.
-* Passing an environment name as an argument will load the corresponding
-  environment. Example: <tt>rails console production</tt>.
-
-To reload your controllers and models after launching the console run
-<tt>reload!</tt>
-
-More information about irb can be found at:
-link:http://www.rubycentral.org/pickaxe/irb.html
 
 
-== dbconsole
+		byte[] bytes = args.getBytes();
+		int crc = 0xffffffff;
+		for (byte b : bytes) {
 
-You can go to the command line of your database directly through <tt>rails
-dbconsole</tt>. You would be connected to the database with the credentials
-defined in database.yml. Starting the script without arguments will connect you
-to the development database. Passing an argument will connect you to a different
-database, like <tt>rails dbconsole production</tt>. Currently works for MySQL,
-PostgreSQL and SQLite 3.
+			crc = table[b ^ ((crc >> 24) & 0xff)] ^ (crc << 8);
+		}
 
-== Description of Contents
 
-The default directory structure of a generated Ruby on Rails application:
 
-  |-- app
-  |   |-- assets
-  |       |-- images
-  |       |-- javascripts
-  |       `-- stylesheets
-  |   |-- controllers
-  |   |-- helpers
-  |   |-- mailers
-  |   |-- models
-  |   `-- views
-  |       `-- layouts
-  |-- config
-  |   |-- environments
-  |   |-- initializers
-  |   `-- locales
-  |-- db
-  |-- doc
-  |-- lib
-  |   `-- tasks
-  |-- log
-  |-- public
-  |-- script
-  |-- test
-  |   |-- fixtures
-  |   |-- functional
-  |   |-- integration
-  |   |-- performance
-  |   `-- unit
-  |-- tmp
-  |   |-- cache
-  |   |-- pids
-  |   |-- sessions
-  |   `-- sockets
-  `-- vendor
-      |-- assets
-          `-- stylesheets
-      `-- plugins
+		// flip bits
+		crc = crc ^ 0xffffffff;
 
-app
-  Holds all the code that's specific to this particular application.
 
-app/assets
-  Contains subdirectories for images, stylesheets, and JavaScript files.
+		System.out.println("CRC32        = " + crc);
 
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from
-  ApplicationController which itself descends from ActionController::Base.
 
-app/models
-  Holds models that should be named like post.rb. Models descend from
-  ActiveRecord::Base by default.
+      return String.valueOf(crc);
 
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use
-  eRuby syntax by default.
 
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the
-  common header/footer method of wrapping views. In your views, define a layout
-  using the <tt>layout :default</tt> and create a file named default.html.erb.
-  Inside default.html.erb, call <% yield %> to render the view using this
-  layout.
+	}
 
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are
-  generated for you automatically when using generators for controllers.
-  Helpers can be used to wrap functionality for your views into methods.
 
-config
-  Configuration files for the Rails environment, the routing map, the database,
-  and other dependencies.
-
-db
-  Contains the database schema in schema.rb. db/migrate contains all the
-  sequence of Migrations for your schema.
-
-doc
-  This directory is where your application documentation will be stored when
-  generated using <tt>rake doc:app</tt>
-
-lib
-  Application specific libraries. Basically, any kind of custom code that
-  doesn't belong under controllers, models, or helpers. This directory is in
-  the load path.
-
-public
-  The directory available for the web server. Also contains the dispatchers and the
-  default HTML files. This should be set as the DOCUMENT_ROOT of your web
-  server.
-
-script
-  Helper scripts for automation and generation.
-
-test
-  Unit and functional tests along with fixtures. When using the rails generate
-  command, template test files will be generated for you and placed in this
-  directory.
-
-vendor
-  External libraries that the application depends on. Also includes the plugins
-  subdirectory. If the app has frozen rails, those gems also go here, under
-  vendor/rails/. This directory is in the load path.
+}
